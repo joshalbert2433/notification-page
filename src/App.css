@@ -12,4 +12,8 @@
 
 		font-family: "Plus Jakarta Sans", sans-serif;
 	}
+
+	body {
+		@apply bg-LightGrayishBlueVery;
+	}
 }

@@ -16,10 +16,8 @@ function Home() {
 		setData(newData);
 	};
 
-	console.log(data);
-
 	return (
-		<div className="px-4">
+		<div className="px-6 max-w-4xl mx-auto bg-white rounded-lg mt-0 md:mt-12">
 			<div className="flex justify-between items-center py-6">
 				<h2 className="text-2xl font-bold">
 					Notification{" "}
@@ -39,7 +37,7 @@ function Home() {
 				</div>
 			</div>
 			<div className="flex flex-col gap-3">
-				{data.map((data) => {
+				{data.map((data, index) => {
 					return (
 						<div
 							className={` p-4  flex gap-4 ${
@@ -47,6 +45,7 @@ function Home() {
 									? "rounded-lg bg-LightGrayishBlueVery"
 									: ""
 							}`}
+							key={index}
 						>
 							<figure className="h-10flex justify-center flex-none">
 								<img
@@ -72,14 +71,14 @@ function Home() {
 										{data.messageActivity?.activityMessage}
 									</span>
 									{data.isNewNotification && (
-										<div className="w-2 h-2 rounded-full bg-RedCustom inline-block ml-1 align-[2px]"></div>
+										<span className="w-2 h-2 rounded-full bg-RedCustom inline-block ml-1 align-[2px]"></span>
 									)}
 								</p>
 								<div className="text-GrayishBlue">
 									{data.timeLapse}
 								</div>
 								{data.privateMessage && (
-									<p className="p-4 border text-GrayishBlueDark mt-3 hover:bg-LightGrayishBlue1 rounded-lg">
+									<p className="p-4 border text-GrayishBlueDark mt-3 hover:bg-LightGrayishBlue1 rounded-lg cursor-pointer mr-2 ">
 										{data.privateMessage}
 									</p>
 								)}
@@ -89,7 +88,7 @@ function Home() {
 									<img
 										src={data.messagePicture}
 										alt=""
-										className="w-12 h-12"
+										className="w-12 h-12 ml-auto mr-2 "
 									/>
 								</figure>
 							)}
