@@ -6,8 +6,14 @@ function Home() {
 	const [data, setData] = useState(notificationData);
 
 	const MarkAllHandler = () => {
-		// TODO: ADD MARK ALL AS READ
-		setData((prev) => [...prev, { ...prev, message: "juswa" }]);
+		const newData = data.map((data) => {
+			if (data.isNewNotification) {
+				return { ...data, isNewNotification: false };
+			} else {
+				return data;
+			}
+		});
+		setData(newData);
 	};
 
 	console.log(data);
@@ -18,7 +24,11 @@ function Home() {
 				<h2 className="text-2xl font-bold">
 					Notification{" "}
 					<span className="px-3 ml-3 py-1 text-white text-lg bg-BlueCustom rounded-lg">
-						3
+						{
+							data?.filter(
+								(data) => data.isNewNotification === true
+							).length
+						}
 					</span>
 				</h2>
 				<div
